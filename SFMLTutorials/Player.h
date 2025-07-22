@@ -1,9 +1,16 @@
 #pragma once
 #include <SFML\Graphics.hpp>
 #include "Collider.h"
+//#include "Animation.h"
+
 class Player
 {
 public:
-	Player(sf::Texture* texture, sf::Vector2f image);
+	Player();
+	~Player();
+
+private:
+	sf::RectangleShape body;
+	//Animation animation
 };
 

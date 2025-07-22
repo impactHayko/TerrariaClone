@@ -1,6 +1,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "Collider.h"
+#include "Animation.h"
 
 
 int main()
@@ -10,7 +11,22 @@ int main()
 	sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode({ width,height }), "Tutorials"); //creating window with title "tutorials"
 	window->setFramerateLimit(60);
 
-	sf::Texture texture;
+	sf::Texture playerTexture;
+	playerTexture.loadFromFile("Sprites/playersprite.png");
+
+
+	//creating player
+	sf::RectangleShape player(sf::Vector2f(30.f, 60.f));
+	player.setPosition({ 300, 300 });
+	player.setTexture(&playerTexture);
+
+	//Animation
+	Animation animation(&playerTexture, sf::Vector2u(7, 6), 0.3f);
+
+	//deltaTime
+	float deltaTime = 0.0f;
+	sf::Clock clock;
+
 
 	//CREATING SQUARE
 	sf::RectangleShape square({ 60.f, 60.f });
@@ -31,6 +47,8 @@ int main()
 	
 	while (window->isOpen())
 	{
+		deltaTime = clock.restart().asSeconds();
+
 		while (const std::optional event = window->pollEvent())
 		{
 			if (event->is<sf::Event::Closed>())
@@ -45,6 +63,9 @@ int main()
 				}
 			}
 		}
+
+		animation.Update(1, deltaTime);
+		player.setTextureRect(animation.uvRect);
 
 
 
@@ -79,6 +100,7 @@ int main()
 		window->clear(sf::Color(0xADD8E6));
 
 		//Drawing
+		window->draw(player);
 		window->draw(square);
 		window->draw(square1);
 		//window->draw(circle);

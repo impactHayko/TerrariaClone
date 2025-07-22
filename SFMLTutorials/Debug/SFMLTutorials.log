@@ -6,4 +6,5 @@ C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.
       C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,23):
        см. объявление "sf::Exception"
   
+C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\main.cpp(15,28): warning C4834: удаление возвращаемого значения функции с атрибутом [[nodiscard]]
   SFMLTutorials.vcxproj -> C:\Users\user\source\repos\SFMLTutorials\Debug\SFMLTutorials.exe
