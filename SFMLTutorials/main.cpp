@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "Collider.h"
 #include "Animation.h"
+#include "Player.h"
 
 
 int main()
@@ -11,22 +12,23 @@ int main()
 	sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode({ width,height }), "Tutorials"); //creating window with title "tutorials"
 	window->setFramerateLimit(60);
 
-	sf::Texture playerTexture;
-	playerTexture.loadFromFile("Sprites/playersprite.png");
+	/*sf::Texture playerTexture;
+	playerTexture.loadFromFile("Sprites/playersprite.png");*/
 
 
-	//creating player
-	sf::RectangleShape player(sf::Vector2f(30.f, 60.f));
-	player.setPosition({ 300, 300 });
-	player.setTexture(&playerTexture);
+	////creating player
+	//sf::RectangleShape player(sf::Vector2f(30.f, 60.f));
+	//player.setPosition({ 300, 300 });
+	//player.setTexture(&playerTexture);
+
+	Player saqo;
 
 	//Animation
-	Animation animation(&playerTexture, sf::Vector2u(7, 6), 0.3f);
+	//Animation animation(&playerTexture, sf::Vector2u(7, 6), 0.3f);
 
 	//deltaTime
 	float deltaTime = 0.0f;
 	sf::Clock clock;
-
 
 	//CREATING SQUARE
 	sf::RectangleShape square({ 60.f, 60.f });
@@ -44,6 +46,7 @@ int main()
 
 	Collider collider1(square1);
 	
+	Collider saqoCollider(saqo.body);
 	
 	while (window->isOpen())
 	{
@@ -64,35 +67,35 @@ int main()
 			}
 		}
 
-		animation.Update(1, deltaTime);
-		player.setTextureRect(animation.uvRect);
+		//animation.Update(1, deltaTime);
+		//player.setTextureRect(animation.uvRect);
 
 
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::S))
 		{
-			collider.CheckCollision(collider1, 0.0f);
-			collider.Move( 0.0f, 1.0f );
+			saqoCollider.CheckCollision(collider1, 0.0f);
+			saqoCollider.Move( 0.0f, 1.0f );
 			
 		}
 
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::W))
 		{
-			collider.CheckCollision(collider1, 0.0f);
-			collider.Move( 0.0f, -1.0f );
+			saqoCollider.CheckCollision(collider1, 0.0f);
+			saqoCollider.Move( 0.0f, -1.0f );
 			
 		}
 
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::D))
 		{
-			collider.CheckCollision(collider1, 0.0f);
-			collider.Move( 1.0f, 0.0f );
+			saqoCollider.CheckCollision(collider1, 0.0f);
+			saqoCollider.Move( 1.0f, 0.0f );
 			
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::A))
 		{
-			collider.CheckCollision(collider1, 0.0f);
-			collider.Move( -1.0f, 0.0f );
+			saqoCollider.CheckCollision(collider1, 0.0f);
+			saqoCollider.Move( -1.0f, 0.0f );
 		
 		}
 
@@ -100,7 +103,7 @@ int main()
 		window->clear(sf::Color(0xADD8E6));
 
 		//Drawing
-		window->draw(player);
+		window->draw(saqo);
 		window->draw(square);
 		window->draw(square1);
 		//window->draw(circle);

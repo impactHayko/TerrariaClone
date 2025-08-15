@@ -3,14 +3,18 @@
 #include "Collider.h"
 //#include "Animation.h"
 
-class Player
+class Player : public sf::Drawable
 {
 public:
+	sf::RectangleShape body;
+	sf::Texture playerTexture;
 	Player();
 	~Player();
 
 private:
-	sf::RectangleShape body;
+	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override {
+		target.draw(body, states);
+	}
 	//Animation animation
 };
 
