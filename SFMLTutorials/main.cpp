@@ -11,46 +11,32 @@ int main()
 	unsigned int height = 600;
 	sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode({ width,height }), "Tutorials"); //creating window with title "tutorials"
 	window->setFramerateLimit(60);
+	sf::Texture playerTexture;
+	playerTexture.loadFromFile("Sprites/playersprite.png");
 
-	/*sf::Texture playerTexture;
-	playerTexture.loadFromFile("Sprites/playersprite.png");*/
-
-
-	////creating player
-	//sf::RectangleShape player(sf::Vector2f(30.f, 60.f));
-	//player.setPosition({ 300, 300 });
-	//player.setTexture(&playerTexture);
-
-	Player saqo;
-
-	//Animation
-	//Animation animation(&playerTexture, sf::Vector2u(7, 6), 0.3f);
-
-	//deltaTime
-	float deltaTime = 0.0f;
-	sf::Clock clock;
+	Player saqo(&playerTexture, sf::Vector2u(7,6), 0.3f);
 
 	//CREATING SQUARE
-	sf::RectangleShape square({ 60.f, 60.f });
-	square.setFillColor(sf::Color::Black);
-	square.setOrigin({30.f,30.f });
-	square.setPosition({ 400,300 });
-
-	//CREATING SQUARE
-	sf::RectangleShape square1({ 60.f, 60.f });
+	sf::RectangleShape square1({ 800.f, 60.f });
+	sf::Vector2f size = square1.getSize();
 	square1.setFillColor(sf::Color::Red);
-	square1.setOrigin({ 30.f,30.f });
+	square1.setOrigin({ size.x / 2, size.y / 2 });
+	//square1.setOrigin({ 30.f,30.f });
 	square1.setPosition({ 400,450 });
-
-	Collider collider(square);
 
 	Collider collider1(square1);
 	
 	Collider saqoCollider(saqo.body);
+
+
+	//deltaTime
+	float deltaTime = 0.0f;
+	sf::Clock clock;
 	
 	while (window->isOpen())
 	{
 		deltaTime = clock.restart().asSeconds();
+		saqo.Update(deltaTime);
 
 		while (const std::optional event = window->pollEvent())
 		{
@@ -66,11 +52,6 @@ int main()
 				}
 			}
 		}
-
-		//animation.Update(1, deltaTime);
-		//player.setTextureRect(animation.uvRect);
-
-
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::S))
 		{
@@ -104,9 +85,7 @@ int main()
 
 		//Drawing
 		window->draw(saqo);
-		window->draw(square);
 		window->draw(square1);
-		//window->draw(circle);
 		window->display();
 		
 		

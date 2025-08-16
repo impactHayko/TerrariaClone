@@ -1,22 +1,4 @@
-﻿  Animation.cpp
-C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,47): warning C4275: class "std::runtime_error", не являющийся dll-интерфейсом, использован в качестве базового для dll-интерфейса class "sf::Exception"
-  (компиляция исходного файла "Animation.cpp")
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\stdexcept(100,30):
-       см. объявление "std::runtime_error"
-      C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,23):
-       см. объявление "sf::Exception"
-  
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\Animation.cpp(10,39): warning C4244: =: преобразование "float" в "T", возможна потеря данных
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\Animation.cpp(10,39): warning C4244:         with
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\Animation.cpp(10,39): warning C4244:         [
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\Animation.cpp(10,39): warning C4244:             T=int
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\Animation.cpp(10,39): warning C4244:         ]
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\Animation.cpp(11,39): warning C4244: =: преобразование "float" в "T", возможна потеря данных
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\Animation.cpp(11,39): warning C4244:         with
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\Animation.cpp(11,39): warning C4244:         [
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\Animation.cpp(11,39): warning C4244:             T=int
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\Animation.cpp(11,39): warning C4244:         ]
-  Collider.cpp
+﻿  Collider.cpp
 C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,47): warning C4275: class "std::runtime_error", не являющийся dll-интерфейсом, использован в качестве базового для dll-интерфейса class "sf::Exception"
   (компиляция исходного файла "Collider.cpp")
       C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\stdexcept(100,30):
@@ -24,16 +6,6 @@ C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.
       C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,23):
        см. объявление "sf::Exception"
   
-  Player.cpp
-C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,47): warning C4275: class "std::runtime_error", не являющийся dll-интерфейсом, использован в качестве базового для dll-интерфейса class "sf::Exception"
-  (компиляция исходного файла "Player.cpp")
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\stdexcept(100,30):
-       см. объявление "std::runtime_error"
-      C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,23):
-       см. объявление "sf::Exception"
-  
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\Player.cpp(7,28): warning C4834: удаление возвращаемого значения функции с атрибутом [[nodiscard]]
-  enviroment.cpp
   main.cpp
 C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,47): warning C4275: class "std::runtime_error", не являющийся dll-интерфейсом, использован в качестве базового для dll-интерфейса class "sf::Exception"
   (компиляция исходного файла "main.cpp")
@@ -42,5 +14,6 @@ C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.
       C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,23):
        см. объявление "sf::Exception"
   
+C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\main.cpp(15,28): warning C4834: удаление возвращаемого значения функции с атрибутом [[nodiscard]]
   Создание кода...
   SFMLTutorials.vcxproj -> C:\Users\user\source\repos\SFMLTutorials\Debug\SFMLTutorials.exe
