@@ -6,14 +6,4 @@ C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.
       C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,23):
        см. объявление "sf::Exception"
   
-  main.cpp
-C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,47): warning C4275: class "std::runtime_error", не являющийся dll-интерфейсом, использован в качестве базового для dll-интерфейса class "sf::Exception"
-  (компиляция исходного файла "main.cpp")
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\stdexcept(100,30):
-       см. объявление "std::runtime_error"
-      C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,23):
-       см. объявление "sf::Exception"
-  
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\main.cpp(15,28): warning C4834: удаление возвращаемого значения функции с атрибутом [[nodiscard]]
-  Создание кода...
   SFMLTutorials.vcxproj -> C:\Users\user\source\repos\SFMLTutorials\Debug\SFMLTutorials.exe

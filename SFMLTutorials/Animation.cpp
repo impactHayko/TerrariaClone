@@ -11,8 +11,6 @@ Animation::Animation(sf::Texture* texture, sf::Vector2u imageCount, float switch
 	uvRect.size.y = texture->getSize().y / float(imageCount.y);
 }
 
-
-
 Animation::~Animation()
 {
 

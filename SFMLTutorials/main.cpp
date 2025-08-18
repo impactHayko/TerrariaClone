@@ -4,7 +4,6 @@
 #include "Animation.h"
 #include "Player.h"
 
-
 int main()
 {
 	unsigned int width = 800;
@@ -27,7 +26,6 @@ int main()
 	Collider collider1(square1);
 	
 	Collider saqoCollider(saqo.body);
-
 
 	//deltaTime
 	float deltaTime = 0.0f;

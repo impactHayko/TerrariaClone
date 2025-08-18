@@ -10,9 +10,11 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime)
 }
 void Player::Update(float deltaTime)
 {
+	physics.Update(deltaTime);
+	sf::Vector2f currentVelocity = physics.getVelocity();
+	body.move(currentVelocity * deltaTime);
 	animation.Update(1, deltaTime);
 	body.setTextureRect(animation.uvRect);
-
 }
 
 Player::~Player()
