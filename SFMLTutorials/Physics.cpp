@@ -13,6 +13,7 @@ Physics::~Physics()
 
 void Physics::Update(float deltaTime)
 {
+	
 	velocity.y += gravity * deltaTime;
 }
 

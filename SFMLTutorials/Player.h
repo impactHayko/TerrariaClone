@@ -2,6 +2,7 @@
 #include <SFML\Graphics.hpp>
 #include "Animation.h"
 #include "Physics.h"
+#include "Collider.h"
 
 class Player : public sf::Drawable
 {
@@ -20,4 +21,3 @@ private:
 	}
 	Physics physics;
 };
-
