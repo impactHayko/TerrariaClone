@@ -17,6 +17,11 @@ void Player::Update(float deltaTime)
 	body.setTextureRect(animation.uvRect);
 }
 
+Physics& Player::getPhysics()
+{
+	return physics;
+}
+
 Player::~Player()
 {
 	

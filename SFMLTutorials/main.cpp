@@ -36,11 +36,25 @@ int main()
 	
 	while (window->isOpen())
 	{
+		saqo.getPhysics().setOnGround(false);
 		deltaTime = clock.restart().asSeconds();
 		saqo.Update(deltaTime);
 		for (auto& platformCollider : platformColliders)
 		{
-			saqoCollider.CheckCollision(platformCollider, 0.f);
+			if (saqoCollider.CheckCollision(platformCollider, 0.0f))
+			{
+				std::cout << "1. Collision detected!" << std::endl;
+				std::cout << "Y velocity right now: " << saqo.getPhysics().getVelocity().y << std::endl;
+
+				if (saqo.getPhysics().getVelocity().y > 0)
+				{
+					std::cout << "2. Landed!" << std::endl;
+					saqo.getPhysics().setOnGround(true);
+					saqo.getPhysics().setVelocity(0.0f);
+					sf::Vector2f currentVelocity = saqo.getPhysics().getVelocity();
+					std::cout << "velocity after collision: (" << currentVelocity.x << currentVelocity.y << ")" << std::endl;
+				}
+			}
 		}
 		
 		while (const std::optional event = window->pollEvent())

@@ -7,8 +7,12 @@ public:
 	Physics();
 	void Update(float deltaTime);
 	sf::Vector2f getVelocity() const;
+	void setOnGround(bool grounded);
+	void setVelocity(float velY);
+	bool isOnGround() const;
 	~Physics();
 private:
 	sf::Vector2f velocity;
 	float gravity;
+	bool onGround;
 };
