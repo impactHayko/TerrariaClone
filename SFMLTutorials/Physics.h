@@ -10,6 +10,7 @@ public:
 	void setOnGround(bool grounded);
 	void setVelocity(float velY);
 	bool isOnGround() const;
+	void jump(float jumpStrenght);
 	~Physics();
 private:
 	sf::Vector2f velocity;

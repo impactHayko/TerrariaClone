@@ -35,6 +35,13 @@ bool Physics::isOnGround() const
 	return onGround;
 }
 
+void Physics::jump(float jumpStrenght)
+{
+	this->velocity.y = -jumpStrenght;
+
+	this->onGround = false;
+}
+
 sf::Vector2f Physics::getVelocity() const
 {
 	return velocity;

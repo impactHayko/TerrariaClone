@@ -72,13 +72,20 @@ int main()
 			}
 		}
 
-		 if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::D))
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::D))
 		{
 			saqoCollider.Move( 1.0f, 0.0f );	
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::A))
 		{
 			saqoCollider.Move( -1.0f, 0.0f );
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scan::Space))
+		{
+			if (saqo.getPhysics().isOnGround())
+			{
+				saqo.getPhysics().jump(500.0f);
+			}
 		}
 
 		//Render
