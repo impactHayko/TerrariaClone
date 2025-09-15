@@ -4,7 +4,7 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime)
 	:body (sf::RectangleShape (sf::Vector2f(30.f, 60.f))),
 	 animation(texture, imageCount, switchTime)
 {
-	body.setPosition({ 100.f, 300.f });
+	body.setPosition({ 200.f, 300.f });
 	body.setTexture(texture);
 	body.setOrigin({ 15.f, 30.f });
 }
