@@ -16,31 +16,13 @@ GameWorld::GameWorld()
 	mPlayerPhysics = &mPlayer->getPhysics();
 	mPlayerCollider = new Collider(mPlayer->body);
 
-	////Creating platform
-	//mPlatform.setSize(sf::Vector2f(withd, 50.f));
-	//sf::Vector2f mPlatformSize = mPlatform.getSize();
-	//mPlatform.setOrigin({ mPlatformSize.x / 2, mPlatformSize.y / 2 });
-	//mPlatform.setPosition({ 300.f, 600.f });
-	//mPlatform.setFillColor(sf::Color::Green);
-	//mPlatformCollider = new Collider(mPlatform);
-
-	//world generation
-	mWorldGrid.resize(WORLD_WIDTH); // 100 coloumns
-	for (int col = 0; col < WORLD_WIDTH; ++col)
-	{
-		mWorldGrid[col].resize(WORLD_HEIGHT);
-		for (int cell = 0; cell < WORLD_HEIGHT; ++cell)
-		{
-			if (cell > 15)
-			{
-				mWorldGrid[col][cell] = 1; // 1 = earth
-			}
-			else
-			{
-				mWorldGrid[col][cell] = 0; // 0 = sky
-			}
-		}
-	}
+	//Creating platform
+	mPlatform.setSize(sf::Vector2f(width, 50.f));
+	sf::Vector2f mPlatformSize = mPlatform.getSize();
+	mPlatform.setOrigin({ mPlatformSize.x / 2, mPlatformSize.y / 2 });
+	mPlatform.setPosition({ 300.f, 600.f });
+	mPlatform.setFillColor(sf::Color::Green);
+	mPlatformCollider = new Collider(mPlatform);
 }
 
 GameWorld::~GameWorld()
@@ -93,12 +75,48 @@ void GameWorld::ProcessEvents()
 
 }
 
+void GameWorld::GenerateChunk(int chunkX)
+{
+	Chunk newChunk;
+
+	for (int col = 0; col < Chunk::CHUNK_WIDTH; ++col)
+	{
+		for (int cell = 0; cell < Chunk::CHUNK_HEIGHT; ++cell)
+		{
+			if (cell > 15)
+			{
+				newChunk.tiles[col][cell] = 1;
+			}
+			else
+			{
+				newChunk.tiles[col][cell] = 0;
+			}
+		}
+	}
+	mWorldChunks[chunkX] = newChunk;
+	std::cout << "Generated chunk at X:" << chunkX << std::endl;
+}
+
 //Update nh00y
 void GameWorld::Update(sf::Time deltaTime)
 {
 	//player
 	mPlayerPhysics->setOnGround(false);
 	mPlayer->Update(deltaTime.asSeconds());
+	//CheckWorldCollision();
+
+	//player position in which chunk
+	int playerChunkX = static_cast<int>(floor(mPlayer->body.getPosition().x / (Chunk::CHUNK_WIDTH * TILE_SIZE)));
+
+	for (int i = -1; i <= 1; ++i)
+	{
+		int chunkToCheck = playerChunkX + i;
+
+		if (mWorldChunks.count(chunkToCheck) == 0)
+		{
+			GenerateChunk(chunkToCheck);
+		}
+	}
 
 	/*if (mPlayerCollider->CheckCollision(*mPlatformCollider, .0f))
 	{
@@ -114,25 +132,7 @@ void GameWorld::Update(sf::Time deltaTime)
 void GameWorld::Render()
 {
 	mWindow->clear(sf::Color::Cyan);
-	sf::RectangleShape tileShape({ TILE_SIZE, TILE_SIZE });
-
-	for (int col = 0; col < WORLD_WIDTH; ++col)
-	{
-		for (int cell = 0; cell < WORLD_HEIGHT; ++cell)
-		{
-			if (mWorldGrid[col][cell] == 1)
-			{
-				float drawCol = col * TILE_SIZE;
-				float drawCell = cell * TILE_SIZE;
-				std::cout << "Trying to draw earth in: " << drawCol << "," << drawCell << std::endl;
-				tileShape.setFillColor(sf::Color(150,75,0));
-				tileShape.setPosition({ drawCol, drawCell });
-				mWindow->draw(tileShape);
-			}
-		}
-	}
-
 	mWindow->draw(*mPlayer);
-	//mWindow->draw(mPlatform);
+	mWindow->draw(mPlatform);
 	mWindow->display();
 }

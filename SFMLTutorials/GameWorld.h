@@ -2,13 +2,25 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <map>
 #include "Player.h"
 #include "Collider.h"
 #include "Physics.h"
 
-const int WORLD_WIDTH = 100;
-const int WORLD_HEIGHT = 50;
 const float TILE_SIZE = 40.f;
+
+struct Chunk
+{
+	static const int CHUNK_WIDTH = 32;
+	static const int CHUNK_HEIGHT = 50;
+
+	std::vector<std::vector<int>> tiles;
+
+	Chunk()
+	{
+		tiles.resize(CHUNK_WIDTH, std::vector<int>(CHUNK_HEIGHT, 0));
+	}
+};
 
 class GameWorld
 {
@@ -23,6 +35,8 @@ private:
 	void ProcessEvents();
 	void Update(sf::Time deltaTime);
 	void Render();
+	//void CheckWorldCollision();
+	void GenerateChunk(int chunkX);
 
 	//Game Objects here instead of main
 	sf::RenderWindow* mWindow;
@@ -36,5 +50,5 @@ private:
 	Collider* mPlatformCollider;
 
 	//Tiles
-	std::vector<std::vector<int>> mWorldGrid;
+	std::map<int, Chunk> mWorldChunks;
 };
