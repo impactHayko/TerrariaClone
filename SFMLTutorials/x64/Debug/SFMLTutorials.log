@@ -1,22 +1,4 @@
-﻿  Animation.cpp
-C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,47): warning C4275: class "std::runtime_error", не являющийся dll-интерфейсом, использован в качестве базового для dll-интерфейса class "sf::Exception"
-  (компиляция исходного файла "Animation.cpp")
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\stdexcept(100,30):
-       см. объявление "std::runtime_error"
-      C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,23):
-       см. объявление "sf::Exception"
-  
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\Animation.cpp(10,39): warning C4244: =: преобразование "float" в "T", возможна потеря данных
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\Animation.cpp(10,39): warning C4244:         with
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\Animation.cpp(10,39): warning C4244:         [
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\Animation.cpp(10,39): warning C4244:             T=int
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\Animation.cpp(10,39): warning C4244:         ]
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\Animation.cpp(11,39): warning C4244: =: преобразование "float" в "T", возможна потеря данных
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\Animation.cpp(11,39): warning C4244:         with
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\Animation.cpp(11,39): warning C4244:         [
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\Animation.cpp(11,39): warning C4244:             T=int
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\Animation.cpp(11,39): warning C4244:         ]
-  Collider.cpp
+﻿  Collider.cpp
 C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,47): warning C4275: class "std::runtime_error", не являющийся dll-интерфейсом, использован в качестве базового для dll-интерфейса class "sf::Exception"
   (компиляция исходного файла "Collider.cpp")
       C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\stdexcept(100,30):
@@ -24,7 +6,6 @@ C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.
       C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,23):
        см. объявление "sf::Exception"
   
-  enviroment.cpp
   GameWorld.cpp
 C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,47): warning C4275: class "std::runtime_error", не являющийся dll-интерфейсом, использован в качестве базового для dll-интерфейса class "sf::Exception"
   (компиляция исходного файла "GameWorld.cpp")
@@ -33,7 +14,12 @@ C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.
       C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,23):
        см. объявление "sf::Exception"
   
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(6,29): warning C4834: удаление возвращаемого значения функции с атрибутом [[nodiscard]]
+C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(9,29): warning C4834: удаление возвращаемого значения функции с атрибутом [[nodiscard]]
+C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(26,33): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
+C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(26,33): warning C4244:         with
+C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(26,33): warning C4244:         [
+C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(26,33): warning C4244:             T=float
+C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(26,33): warning C4244:         ]
   main.cpp
 C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,47): warning C4275: class "std::runtime_error", не являющийся dll-интерфейсом, использован в качестве базового для dll-интерфейса class "sf::Exception"
   (компиляция исходного файла "main.cpp")
@@ -42,6 +28,7 @@ C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.
       C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,23):
        см. объявление "sf::Exception"
   
+  parser.cpp
   Physics.cpp
 C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,47): warning C4275: class "std::runtime_error", не являющийся dll-интерфейсом, использован в качестве базового для dll-интерфейса class "sf::Exception"
   (компиляция исходного файла "Physics.cpp")
@@ -58,12 +45,29 @@ C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.
       C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,23):
        см. объявление "sf::Exception"
   
+  WorldRenderer.cpp
+C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,47): warning C4275: class "std::runtime_error", не являющийся dll-интерфейсом, использован в качестве базового для dll-интерфейса class "sf::Exception"
+  (компиляция исходного файла "WorldRenderer.cpp")
+      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\stdexcept(100,30):
+       см. объявление "std::runtime_error"
+      C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,23):
+       см. объявление "sf::Exception"
+  
+C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\WorldRenderer.cpp(24,31): warning C4390: ";": обнаружен пустой контролируемый оператор; это правильно?
   Создание кода...
 Animation.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: class sf::Vector2<unsigned int> __cdecl sf::Texture::getSize(void)const " (__imp_?getSize@Texture@sf@@QEBA?AV?$Vector2@I@2@XZ) в функции "public: __cdecl Animation::Animation(class sf::Texture *,class sf::Vector2<unsigned int>,float)" (??0Animation@@QEAA@PEAVTexture@sf@@V?$Vector2@I@2@M@Z).
 Collider.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: class sf::Vector2<float> __cdecl sf::Transformable::getPosition(void)const " (__imp_?getPosition@Transformable@sf@@QEBA?AV?$Vector2@M@2@XZ) в функции "public: class sf::Vector2<float> __cdecl Collider::GetPosition(void)" (?GetPosition@Collider@@QEAA?AV?$Vector2@M@sf@@XZ).
 Collider.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: void __cdecl sf::Transformable::move(class sf::Vector2<float>)" (__imp_?move@Transformable@sf@@QEAAXV?$Vector2@M@2@@Z) в функции "public: void __cdecl Collider::Move(float,float)" (?Move@Collider@@QEAAXMM@Z).
 Player.obj : error LNK2001: неразрешенный внешний символ "__declspec(dllimport) public: void __cdecl sf::Transformable::move(class sf::Vector2<float>)" (__imp_?move@Transformable@sf@@QEAAXV?$Vector2@M@2@@Z).
 Collider.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: class sf::Vector2<float> __cdecl sf::RectangleShape::getSize(void)const " (__imp_?getSize@RectangleShape@sf@@QEBA?AV?$Vector2@M@2@XZ) в функции "public: class sf::Vector2<float> __cdecl Collider::GetHalfSize(void)" (?GetHalfSize@Collider@@QEAA?AV?$Vector2@M@sf@@XZ).
+GameWorld.obj : error LNK2001: неразрешенный внешний символ "__declspec(dllimport) public: class sf::Vector2<float> __cdecl sf::RectangleShape::getSize(void)const " (__imp_?getSize@RectangleShape@sf@@QEBA?AV?$Vector2@M@2@XZ).
+GameWorld.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: void __cdecl sf::Transformable::setPosition(class sf::Vector2<float>)" (__imp_?setPosition@Transformable@sf@@QEAAXV?$Vector2@M@2@@Z) в функции "public: __cdecl GameWorld::GameWorld(void)" (??0GameWorld@@QEAA@XZ).
+Player.obj : error LNK2001: неразрешенный внешний символ "__declspec(dllimport) public: void __cdecl sf::Transformable::setPosition(class sf::Vector2<float>)" (__imp_?setPosition@Transformable@sf@@QEAAXV?$Vector2@M@2@@Z).
+WorldRenderer.obj : error LNK2001: неразрешенный внешний символ "__declspec(dllimport) public: void __cdecl sf::Transformable::setPosition(class sf::Vector2<float>)" (__imp_?setPosition@Transformable@sf@@QEAAXV?$Vector2@M@2@@Z).
+GameWorld.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: void __cdecl sf::Transformable::setOrigin(class sf::Vector2<float>)" (__imp_?setOrigin@Transformable@sf@@QEAAXV?$Vector2@M@2@@Z) в функции "public: __cdecl GameWorld::GameWorld(void)" (??0GameWorld@@QEAA@XZ).
+Player.obj : error LNK2001: неразрешенный внешний символ "__declspec(dllimport) public: void __cdecl sf::Transformable::setOrigin(class sf::Vector2<float>)" (__imp_?setOrigin@Transformable@sf@@QEAAXV?$Vector2@M@2@@Z).
+GameWorld.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: void __cdecl sf::Shape::setFillColor(class sf::Color)" (__imp_?setFillColor@Shape@sf@@QEAAXVColor@2@@Z) в функции "public: __cdecl GameWorld::GameWorld(void)" (??0GameWorld@@QEAA@XZ).
+WorldRenderer.obj : error LNK2001: неразрешенный внешний символ "__declspec(dllimport) public: void __cdecl sf::Shape::setFillColor(class sf::Color)" (__imp_?setFillColor@Shape@sf@@QEAAXVColor@2@@Z).
 GameWorld.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: __cdecl sf::Texture::Texture(void)" (__imp_??0Texture@sf@@QEAA@XZ) в функции "public: __cdecl GameWorld::GameWorld(void)" (??0GameWorld@@QEAA@XZ).
 Player.obj : error LNK2001: неразрешенный внешний символ "__declspec(dllimport) public: __cdecl sf::Texture::Texture(void)" (__imp_??0Texture@sf@@QEAA@XZ).
 GameWorld.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: __cdecl sf::Texture::~Texture(void)" (__imp_??1Texture@sf@@QEAA@XZ) в функции "int `public: __cdecl GameWorld::GameWorld(void)'::`1'::dtor$0" (?dtor$0@?0???0GameWorld@@QEAA@XZ@4HA).
@@ -71,11 +75,15 @@ Player.obj : error LNK2001: неразрешенный внешний симво
 GameWorld.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: bool __cdecl sf::Texture::loadFromFile(class std::filesystem::path const &,bool,class sf::Rect<int> const &)" (__imp_?loadFromFile@Texture@sf@@QEAA_NAEBVpath@filesystem@std@@_NAEBV?$Rect@H@2@@Z) в функции "public: __cdecl GameWorld::GameWorld(void)" (??0GameWorld@@QEAA@XZ).
 GameWorld.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: __cdecl sf::RectangleShape::RectangleShape(class sf::Vector2<float>)" (__imp_??0RectangleShape@sf@@QEAA@V?$Vector2@M@1@@Z) в функции "public: __cdecl GameWorld::GameWorld(void)" (??0GameWorld@@QEAA@XZ).
 Player.obj : error LNK2001: неразрешенный внешний символ "__declspec(dllimport) public: __cdecl sf::RectangleShape::RectangleShape(class sf::Vector2<float>)" (__imp_??0RectangleShape@sf@@QEAA@V?$Vector2@M@1@@Z).
+WorldRenderer.obj : error LNK2001: неразрешенный внешний символ "__declspec(dllimport) public: __cdecl sf::RectangleShape::RectangleShape(class sf::Vector2<float>)" (__imp_??0RectangleShape@sf@@QEAA@V?$Vector2@M@1@@Z).
+GameWorld.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: void __cdecl sf::RectangleShape::setSize(class sf::Vector2<float>)" (__imp_?setSize@RectangleShape@sf@@QEAAXV?$Vector2@M@2@@Z) в функции "public: __cdecl GameWorld::GameWorld(void)" (??0GameWorld@@QEAA@XZ).
 GameWorld.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: virtual __cdecl sf::RectangleShape::~RectangleShape(void)" (__imp_??1RectangleShape@sf@@UEAA@XZ) в функции "int `public: __cdecl GameWorld::GameWorld(void)'::`1'::dtor$1" (?dtor$1@?0???0GameWorld@@QEAA@XZ@4HA).
 Player.obj : error LNK2001: неразрешенный внешний символ "__declspec(dllimport) public: virtual __cdecl sf::RectangleShape::~RectangleShape(void)" (__imp_??1RectangleShape@sf@@UEAA@XZ).
+WorldRenderer.obj : error LNK2001: неразрешенный внешний символ "__declspec(dllimport) public: virtual __cdecl sf::RectangleShape::~RectangleShape(void)" (__imp_??1RectangleShape@sf@@UEAA@XZ).
 GameWorld.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: void __cdecl sf::RenderTarget::clear(class sf::Color)" (__imp_?clear@RenderTarget@sf@@QEAAXVColor@2@@Z) в функции "private: void __cdecl GameWorld::Render(void)" (?Render@GameWorld@@AEAAXXZ).
 GameWorld.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: void __cdecl sf::RenderTarget::draw(class sf::Drawable const &,struct sf::RenderStates const &)" (__imp_?draw@RenderTarget@sf@@QEAAXAEBVDrawable@2@AEBURenderStates@2@@Z) в функции "private: void __cdecl GameWorld::Render(void)" (?Render@GameWorld@@AEAAXXZ).
 Player.obj : error LNK2001: неразрешенный внешний символ "__declspec(dllimport) public: void __cdecl sf::RenderTarget::draw(class sf::Drawable const &,struct sf::RenderStates const &)" (__imp_?draw@RenderTarget@sf@@QEAAXAEBVDrawable@2@AEBURenderStates@2@@Z).
+WorldRenderer.obj : error LNK2001: неразрешенный внешний символ "__declspec(dllimport) public: void __cdecl sf::RenderTarget::draw(class sf::Drawable const &,struct sf::RenderStates const &)" (__imp_?draw@RenderTarget@sf@@QEAAXAEBVDrawable@2@AEBURenderStates@2@@Z).
 GameWorld.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: __cdecl sf::VideoMode::VideoMode(class sf::Vector2<unsigned int>,unsigned int)" (__imp_??0VideoMode@sf@@QEAA@V?$Vector2@I@1@I@Z) в функции "public: __cdecl GameWorld::GameWorld(void)" (??0GameWorld@@QEAA@XZ).
 GameWorld.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: bool __cdecl sf::WindowBase::isOpen(void)const " (__imp_?isOpen@WindowBase@sf@@QEBA_NXZ) в функции "public: void __cdecl GameWorld::Run(void)" (?Run@GameWorld@@QEAAXXZ).
 GameWorld.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: class std::optional<class sf::Event> __cdecl sf::WindowBase::pollEvent(void)" (__imp_?pollEvent@WindowBase@sf@@QEAA?AV?$optional@VEvent@sf@@@std@@XZ) в функции "private: void __cdecl GameWorld::ProcessEvents(void)" (?ProcessEvents@GameWorld@@AEAAXXZ).
@@ -101,15 +109,16 @@ GameWorld.obj : error LNK2001: неразрешенный внешний сим�
 GameWorld.obj : error LNK2001: неразрешенный внешний символ "protected: virtual void __cdecl sf::RenderWindow::onCreate(void)" (?onCreate@RenderWindow@sf@@MEAAXXZ).
 GameWorld.obj : error LNK2001: неразрешенный внешний символ "protected: virtual void __cdecl sf::RenderWindow::onResize(void)" (?onResize@RenderWindow@sf@@MEAAXXZ).
 GameWorld.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: static struct sf::RenderStates const sf::RenderStates::Default" (__imp_?Default@RenderStates@sf@@2U12@B) в функции "private: void __cdecl GameWorld::Render(void)" (?Render@GameWorld@@AEAAXXZ).
+WorldRenderer.obj : error LNK2001: неразрешенный внешний символ "__declspec(dllimport) public: static struct sf::RenderStates const sf::RenderStates::Default" (__imp_?Default@RenderStates@sf@@2U12@B).
 Player.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: virtual __cdecl sf::Drawable::~Drawable(void)" (__imp_??1Drawable@sf@@UEAA@XZ) в функции "int `public: __cdecl Player::Player(class sf::Texture *,class Texture::Vector2<unsigned int>,float)'::`1'::dtor$0" (?dtor$0@?0???0Player@@QEAA@PEAVTexture@sf@@V?$Vector2@I@2@M@Z@4HA).
 Player.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: __cdecl sf::Drawable::Drawable(void)" (__imp_??0Drawable@sf@@QEAA@XZ) в функции "public: __cdecl Player::Player(class sf::Texture *,class sf::Vector2<unsigned int>,float)" (??0Player@@QEAA@PEAVTexture@sf@@V?$Vector2@I@2@M@Z).
-Player.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: void __cdecl sf::Transformable::setPosition(class sf::Vector2<float>)" (__imp_?setPosition@Transformable@sf@@QEAAXV?$Vector2@M@2@@Z) в функции "public: __cdecl Player::Player(class sf::Texture *,class sf::Vector2<unsigned int>,float)" (??0Player@@QEAA@PEAVTexture@sf@@V?$Vector2@I@2@M@Z).
-Player.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: void __cdecl sf::Transformable::setOrigin(class sf::Vector2<float>)" (__imp_?setOrigin@Transformable@sf@@QEAAXV?$Vector2@M@2@@Z) в функции "public: __cdecl Player::Player(class sf::Texture *,class sf::Vector2<unsigned int>,float)" (??0Player@@QEAA@PEAVTexture@sf@@V?$Vector2@I@2@M@Z).
 Player.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: void __cdecl sf::Shape::setTexture(class sf::Texture const *,bool)" (__imp_?setTexture@Shape@sf@@QEAAXPEBVTexture@2@_N@Z) в функции "public: __cdecl Player::Player(class sf::Texture *,class sf::Vector2<unsigned int>,float)" (??0Player@@QEAA@PEAVTexture@sf@@V?$Vector2@I@2@M@Z).
 Player.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: void __cdecl sf::Shape::setTextureRect(class sf::Rect<int> const &)" (__imp_?setTextureRect@Shape@sf@@QEAAXAEBV?$Rect@H@2@@Z) в функции "public: void __cdecl Player::Update(float)" (?Update@Player@@QEAAXM@Z).
+WorldRenderer.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: class sf::Vector2<float> __cdecl sf::View::getCenter(void)const " (__imp_?getCenter@View@sf@@QEBA?AV?$Vector2@M@2@XZ) в функции "public: void __cdecl WorldRenderer::draw(class sf::View const &)" (?draw@WorldRenderer@@QEAAXAEBVView@sf@@@Z).
+WorldRenderer.obj : error LNK2019: ссылка на неразрешенный внешний символ "__declspec(dllimport) public: class sf::Vector2<float> __cdecl sf::View::getSize(void)const " (__imp_?getSize@View@sf@@QEBA?AV?$Vector2@M@2@XZ) в функции "public: void __cdecl WorldRenderer::draw(class sf::View const &)" (?draw@WorldRenderer@@QEAAXAEBVView@sf@@@Z).
 C:\Users\user\source\repos\SFMLTutorials\\External\lib\sfml-window-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
 C:\Users\user\source\repos\SFMLTutorials\\External\lib\sfml-system-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
 C:\Users\user\source\repos\SFMLTutorials\\External\lib\sfml-graphics-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
 C:\Users\user\source\repos\SFMLTutorials\\External\lib\sfml-audio-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
 C:\Users\user\source\repos\SFMLTutorials\\External\lib\sfml-network-d.lib : warning LNK4272: тип компьютера библиотеки "x86" конфликтует с типом целевого компьютера "x64"
-C:\Users\user\source\repos\SFMLTutorials\x64\Debug\SFMLTutorials.exe : fatal error LNK1120: неразрешенных внешних элементов: 42
+C:\Users\user\source\repos\SFMLTutorials\x64\Debug\SFMLTutorials.exe : fatal error LNK1120: неразрешенных внешних элементов: 46

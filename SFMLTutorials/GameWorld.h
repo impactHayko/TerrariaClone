@@ -6,6 +6,9 @@
 #include "Player.h"
 #include "Collider.h"
 #include "Physics.h"
+#include <memory>
+
+class WorldRenderer;
 
 const float TILE_SIZE = 40.f;
 
@@ -35,11 +38,15 @@ private:
 	void ProcessEvents();
 	void Update(sf::Time deltaTime);
 	void Render();
-	//void CheckWorldCollision();
-	void GenerateChunk(int chunkX);
+	void RenderWorld();
+	
+
+	//Level related
+	
 
 	//Game Objects here instead of main
 	sf::RenderWindow* mWindow;
+	//sf::View mView;
 	Player* mPlayer;
 	Physics* mPlayerPhysics;
 	Collider* mPlayerCollider;
@@ -48,7 +55,7 @@ private:
 	//Platform
 	sf::RectangleShape mPlatform;
 	Collider* mPlatformCollider;
-
-	//Tiles
-	std::map<int, Chunk> mWorldChunks;
+	
+	//worldGridAziz
+	std::vector <std::vector<int>> mWorldGrid;
 };

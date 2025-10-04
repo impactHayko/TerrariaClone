@@ -6,19 +6,12 @@ C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.
       C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,23):
        см. объявление "sf::Exception"
   
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(6,29): warning C4834: удаление возвращаемого значения функции с атрибутом [[nodiscard]]
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(20,33): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(20,33): warning C4244:         with
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(20,33): warning C4244:         [
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(20,33): warning C4244:             T=float
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(20,33): warning C4244:         ]
-  main.cpp
-C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,47): warning C4275: class "std::runtime_error", не являющийся dll-интерфейсом, использован в качестве базового для dll-интерфейса class "sf::Exception"
-  (компиляция исходного файла "main.cpp")
-      C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\include\stdexcept(100,30):
-       см. объявление "std::runtime_error"
-      C:\Users\user\source\repos\SFMLTutorials\External\include\SFML\System\Exception.hpp(41,23):
-       см. объявление "sf::Exception"
-  
-  Создание кода...
+C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(9,29): warning C4834: удаление возвращаемого значения функции с атрибутом [[nodiscard]]
+C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(26,33): warning C4244: аргумент: преобразование "unsigned int" в "T", возможна потеря данных
+C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(26,33): warning C4244:         with
+C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(26,33): warning C4244:         [
+C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(26,33): warning C4244:             T=float
+C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(26,33): warning C4244:         ]
+C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(113,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(115,21): warning C4018: <: несоответствие типов со знаком и без знака
   SFMLTutorials.vcxproj -> C:\Users\user\source\repos\SFMLTutorials\Debug\SFMLTutorials.exe

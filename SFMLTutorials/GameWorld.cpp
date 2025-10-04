@@ -1,5 +1,8 @@
 #include "GameWorld.h"
 #include <iostream>
+#include <fstream>
+#include "WorldRenderer.h"
+#include "parser.h"
 
 GameWorld::GameWorld()
 {
@@ -10,6 +13,9 @@ GameWorld::GameWorld()
 	unsigned int height = 720;
 	mWindow = new sf::RenderWindow(sf::VideoMode({ width, height }), "Terraria Clone");
 	mWindow->setFramerateLimit(60);
+
+	//mView.setSize(sf::Vector2f(width, height));
+	//mView.setCenter({ width / 2.0f, height / 2.0f });
 
 	//Creating player and it's components
 	mPlayer = new Player(&mPlayerTexture, sf::Vector2u (7,6) , 0.3f);
@@ -23,6 +29,10 @@ GameWorld::GameWorld()
 	mPlatform.setPosition({ 300.f, 600.f });
 	mPlatform.setFillColor(sf::Color::Green);
 	mPlatformCollider = new Collider(mPlatform);
+
+	//level (worldGrid)
+	mWorldGrid = LoadWorldFromFile("level1.txt");
+
 }
 
 GameWorld::~GameWorld()
@@ -75,64 +85,63 @@ void GameWorld::ProcessEvents()
 
 }
 
-void GameWorld::GenerateChunk(int chunkX)
-{
-	Chunk newChunk;
-
-	for (int col = 0; col < Chunk::CHUNK_WIDTH; ++col)
-	{
-		for (int cell = 0; cell < Chunk::CHUNK_HEIGHT; ++cell)
-		{
-			if (cell > 15)
-			{
-				newChunk.tiles[col][cell] = 1;
-			}
-			else
-			{
-				newChunk.tiles[col][cell] = 0;
-			}
-		}
-	}
-	mWorldChunks[chunkX] = newChunk;
-	std::cout << "Generated chunk at X:" << chunkX << std::endl;
-}
-
 //Update nh00y
 void GameWorld::Update(sf::Time deltaTime)
 {
 	//player
 	mPlayerPhysics->setOnGround(false);
 	mPlayer->Update(deltaTime.asSeconds());
-	//CheckWorldCollision();
 
-	//player position in which chunk
-	int playerChunkX = static_cast<int>(floor(mPlayer->body.getPosition().x / (Chunk::CHUNK_WIDTH * TILE_SIZE)));
+	//camera
+	//mView.setCenter(mPlayer->body.getPosition());
 
-	for (int i = -1; i <= 1; ++i)
-	{
-		int chunkToCheck = playerChunkX + i;
-
-		if (mWorldChunks.count(chunkToCheck) == 0)
-		{
-			GenerateChunk(chunkToCheck);
-		}
-	}
-
-	/*if (mPlayerCollider->CheckCollision(*mPlatformCollider, .0f))
+	if (mPlayerCollider->CheckCollision(*mPlatformCollider, .0f))
 	{
 		if (mPlayerPhysics->getVelocity().y > 0)
 		{
 			mPlayerPhysics->setOnGround(true);
 			mPlayerPhysics->setVelocity(0.f);
 		}
-	}*/
+	}
+}
+
+//LevelRender
+void GameWorld::RenderWorld()
+{
+	sf::RectangleShape tileShape({ TILE_SIZE, TILE_SIZE });
+
+	for (int y = 0; y < mWorldGrid.size(); ++y)
+	{
+		for (int x = 0; x < mWorldGrid[y].size(); ++x)
+		{
+			int tileID = mWorldGrid[y][x];
+			if (tileID != 0)
+			{
+				if (tileID == 1)
+				{
+					tileShape.setFillColor(sf::Color(150, 75, 0));
+				}
+				else if (tileID == 2)
+				{
+					tileShape.setFillColor(sf::Color(128, 128, 128));
+				}
+
+				tileShape.setPosition({ x * TILE_SIZE, y * TILE_SIZE });
+				mWindow->draw(tileShape);
+			}
+		}
+	}
 }
 
 //Render
 void GameWorld::Render()
 {
 	mWindow->clear(sf::Color::Cyan);
+	RenderWorld();
+	//mWindow->setView(mView);
+	//m_worldRenderer->draw(mView);
 	mWindow->draw(*mPlayer);
 	mWindow->draw(mPlatform);
 	mWindow->display();
+	
 }
