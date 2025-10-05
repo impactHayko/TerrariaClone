@@ -91,18 +91,19 @@ void GameWorld::Update(sf::Time deltaTime)
 	//player
 	mPlayerPhysics->setOnGround(false);
 	mPlayer->Update(deltaTime.asSeconds());
+	CheckWorldCollision();
 
 	//camera
 	//mView.setCenter(mPlayer->body.getPosition());
 
-	if (mPlayerCollider->CheckCollision(*mPlatformCollider, .0f))
+	/*if (mPlayerCollider->CheckCollision(*mPlatformCollider, .0f))
 	{
 		if (mPlayerPhysics->getVelocity().y > 0)
 		{
 			mPlayerPhysics->setOnGround(true);
 			mPlayerPhysics->setVelocity(0.f);
 		}
-	}
+	}*/
 }
 
 //LevelRender
@@ -133,6 +134,75 @@ void GameWorld::RenderWorld()
 	}
 }
 
+//void GameWorld::FindPlayerPosition()
+//{
+//	sf::FloatRect playerBounds = mPlayer->body.getGlobalBounds();
+//	int leftTile = static_cast<int>(playerBounds.position.x / TILE_SIZE);
+//	int rightTile = static_cast<int>((playerBounds.position.x + playerBounds.size.x) / TILE_SIZE);
+//	int topTile = static_cast<int>(playerBounds.position.y / TILE_SIZE);
+//	int bottomTile = static_cast<int>((playerBounds.position.y + playerBounds.size.y) / TILE_SIZE);
+//
+//	std::cout << "left tile : " << leftTile << std::endl;
+//	std::cout << "right tile : " << rightTile << std::endl;
+//	std::cout << "top tile : " << topTile << std::endl;
+//	std::cout << "bottom tile : " << bottomTile << std::endl;
+//}
+
+bool GameWorld::isTileSolid(int tileID) const
+{
+	switch (tileID)
+	{
+		case 1:
+		case 2:
+			return true;
+
+		default:
+			return false;
+	}
+}
+
+void GameWorld::CheckWorldCollision()
+{
+	sf::FloatRect playerBounds = mPlayer->body.getGlobalBounds();
+	int leftTile = static_cast<int>(playerBounds.position.x / TILE_SIZE);
+	int rightTile = static_cast<int>((playerBounds.position.x + playerBounds.size.x) / TILE_SIZE);
+	int topTile = static_cast<int>(playerBounds.position.y / TILE_SIZE);
+	int bottomTile = static_cast<int>((playerBounds.position.y + playerBounds.size.y) / TILE_SIZE);
+
+	for (int y = topTile; y <= bottomTile; ++y)
+	{
+		for (int x = leftTile; x <= rightTile; ++x)
+		{
+			if (y < 0 || y >= mWorldGrid.size() || x < 0 || x >= mWorldGrid[y].size())
+			{
+				continue;
+			}
+
+			int tileID = mWorldGrid[y][x];
+
+			if (!isTileSolid(tileID))
+			{
+				continue;
+			}
+
+			sf::RectangleShape tileRect;
+			tileRect.setSize({ TILE_SIZE, TILE_SIZE });
+			tileRect.setPosition({x * TILE_SIZE, y * TILE_SIZE});
+
+			Collider tileCollider(tileRect);
+
+			if (mPlayerCollider->CheckCollision(tileCollider, 0.0f))
+			{
+				if (mPlayerPhysics->getVelocity().y > 0)
+				{
+					mPlayerPhysics->setOnGround(true);
+					mPlayerPhysics->setVelocity(0.f);
+				}
+			}
+		}
+	}
+}
+
 //Render
 void GameWorld::Render()
 {
@@ -141,7 +211,7 @@ void GameWorld::Render()
 	//mWindow->setView(mView);
 	//m_worldRenderer->draw(mView);
 	mWindow->draw(*mPlayer);
-	mWindow->draw(mPlatform);
+	//mWindow->draw(mPlatform);
 	mWindow->display();
 	
 }

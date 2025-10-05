@@ -34,12 +34,13 @@ public:
 	void Run();
 
 private:
-	//Private methods for code to be organised
 	void ProcessEvents();
 	void Update(sf::Time deltaTime);
 	void Render();
 	void RenderWorld();
-	
+	void CheckWorldCollision();
+	void FindPlayerPosition();
+	bool isTileSolid(int tileID) const;
 
 	//Level related
 	

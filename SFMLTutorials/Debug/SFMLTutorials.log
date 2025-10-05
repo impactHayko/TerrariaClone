@@ -12,6 +12,8 @@ C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(26,33): war
 C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(26,33): warning C4244:         [
 C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(26,33): warning C4244:             T=float
 C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(26,33): warning C4244:         ]
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(113,20): warning C4018: <: несоответствие типов со знаком и без знака
-C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(115,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(114,20): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(116,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(176,19): warning C4018: >=: несоответствие типов со знаком и без знака
+C:\Users\user\source\repos\SFMLTutorials\SFMLTutorials\GameWorld.cpp(176,54): warning C4018: >=: несоответствие типов со знаком и без знака
   SFMLTutorials.vcxproj -> C:\Users\user\source\repos\SFMLTutorials\Debug\SFMLTutorials.exe
