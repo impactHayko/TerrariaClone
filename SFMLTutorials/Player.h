@@ -12,6 +12,7 @@ public:
 
 	Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime);
 	void Update(float deltaTime);
+	void animationUpdate(int row, float deltaTime);
 
 	Physics& getPhysics();
 	~Player();

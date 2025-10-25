@@ -26,6 +26,11 @@ void Physics::setOnGround(bool grounded)
 	this->onGround = grounded;
 }
 
+void Physics::setVelocityX(float velX)
+{
+	this->velocity.x = velX;
+}
+
 void Physics::setVelocity(float velY)
 {
 	this->velocity.y = velY;
@@ -41,6 +46,12 @@ void Physics::jump(float jumpStrenght)
 	this->velocity.y = -jumpStrenght;
 
 	this->onGround = false;
+}
+
+void Physics::move(float x)
+{
+	this->velocity.x = x;
+	/*this->velocity.y = y;*/
 }
 
 sf::Vector2f Physics::getVelocity() const

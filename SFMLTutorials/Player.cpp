@@ -13,8 +13,12 @@ void Player::Update(float deltaTime)
 	physics.Update(deltaTime);
 	sf::Vector2f currentVelocity = physics.getVelocity();
 	body.move(currentVelocity * deltaTime);
-	animation.Update(1, deltaTime);
 	body.setTextureRect(animation.uvRect);
+}
+
+void Player::animationUpdate(int row, float deltaTime)
+{
+	animation.Update(row, deltaTime);
 }
 
 Physics& Player::getPhysics()

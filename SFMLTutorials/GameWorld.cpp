@@ -18,7 +18,7 @@ GameWorld::GameWorld()
 	//mView.setCenter({ width / 2.0f, height / 2.0f });
 
 	//Creating player and it's components
-	mPlayer = new Player(&mPlayerTexture, sf::Vector2u (7,6) , 0.3f);
+	mPlayer = new Player(&mPlayerTexture, sf::Vector2u (7,6) , .1f);
 	mPlayerPhysics = &mPlayer->getPhysics();
 	mPlayerCollider = new Collider(mPlayer->body);
 
@@ -78,8 +78,27 @@ void GameWorld::ProcessEvents()
 	{
 		if (mPlayerPhysics->isOnGround())
 		{
-			mPlayerPhysics->jump(600.0f);
+			mPlayerPhysics->jump(350.0f);
 		}
+	}
+
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::A))
+	{
+		mPlayer->body.setScale(sf::Vector2f(-1.f, 1.f));
+		mPlayer->animationUpdate(1, 0.02f);
+		mPlayerPhysics->move(-200.0f);
+	}
+
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::D))
+	{
+		mPlayer->body.setScale(sf::Vector2f(1.f, 1.f));
+		mPlayer->animationUpdate(1, 0.02f);
+		mPlayerPhysics->move(200.0f);
+	}
+
+	else
+	{
+		mPlayerPhysics->setVelocityX(0.f);
 	}
 
 
@@ -89,7 +108,6 @@ void GameWorld::ProcessEvents()
 void GameWorld::Update(sf::Time deltaTime)
 {
 	//player
-	mPlayerPhysics->setOnGround(false);
 	mPlayer->Update(deltaTime.asSeconds());
 	CheckWorldCollision();
 
@@ -163,6 +181,8 @@ bool GameWorld::isTileSolid(int tileID) const
 
 void GameWorld::CheckWorldCollision()
 {
+	mPlayerPhysics->setOnGround(false);
+
 	sf::FloatRect playerBounds = mPlayer->body.getGlobalBounds();
 	int leftTile = static_cast<int>(playerBounds.position.x / TILE_SIZE);
 	int rightTile = static_cast<int>((playerBounds.position.x + playerBounds.size.x) / TILE_SIZE);
@@ -187,7 +207,8 @@ void GameWorld::CheckWorldCollision()
 
 			sf::RectangleShape tileRect;
 			tileRect.setSize({ TILE_SIZE, TILE_SIZE });
-			tileRect.setPosition({x * TILE_SIZE, y * TILE_SIZE});
+			tileRect.setOrigin({ TILE_SIZE / 2.0f, TILE_SIZE / 2.0f });
+			tileRect.setPosition({x * TILE_SIZE + TILE_SIZE / 2.0f, y * TILE_SIZE + TILE_SIZE / 2.0f });
 
 			Collider tileCollider(tileRect);
 
@@ -196,7 +217,9 @@ void GameWorld::CheckWorldCollision()
 				if (mPlayerPhysics->getVelocity().y > 0)
 				{
 					mPlayerPhysics->setOnGround(true);
-					mPlayerPhysics->setVelocity(0.f);
+					sf::Vector2f currentVelocity = mPlayerPhysics->getVelocity();
+					currentVelocity.y = 0.f;
+					mPlayerPhysics->setVelocity(currentVelocity.y);
 				}
 			}
 		}
