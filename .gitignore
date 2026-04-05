@@ -1,1 +1,8 @@
 .vs/
+Debug/
+SFMLTutorials/Debug/
+*.exe
+*.pdb
+*.ilk
+*.obj
+*.idb

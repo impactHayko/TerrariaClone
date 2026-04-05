@@ -14,13 +14,9 @@ GameWorld::GameWorld()
 	mWindow = new sf::RenderWindow(sf::VideoMode({ width, height }), "Terraria Clone");
 	mWindow->setFramerateLimit(60);
 
-	//mView.setSize(sf::Vector2f(width, height));
-	//mView.setCenter({ width / 2.0f, height / 2.0f });
-
 	//Creating player and it's components
 	mPlayer = new Player(&mPlayerTexture, sf::Vector2u (7,6) , .1f);
 	mPlayerPhysics = &mPlayer->getPhysics();
-	mPlayerCollider = new Collider(mPlayer->body);
 
 	//Creating platform
 	mPlatform.setSize(sf::Vector2f(width, 50.f));
@@ -28,7 +24,6 @@ GameWorld::GameWorld()
 	mPlatform.setOrigin({ mPlatformSize.x / 2, mPlatformSize.y / 2 });
 	mPlatform.setPosition({ 300.f, 600.f });
 	mPlatform.setFillColor(sf::Color::Green);
-	mPlatformCollider = new Collider(mPlatform);
 
 	//level (worldGrid)
 	mWorldGrid = LoadWorldFromFile("level1.txt");
@@ -39,8 +34,6 @@ GameWorld::~GameWorld()
 {
 	delete mWindow;
 	delete mPlayer;
-	delete mPlayerCollider;
-	delete mPlatformCollider;
 }
 
 void GameWorld::Run()
@@ -84,15 +77,14 @@ void GameWorld::ProcessEvents()
 
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::A))
 	{
-		mPlayer->body.setScale(sf::Vector2f(-1.f, 1.f));
-		mPlayer->animationUpdate(1, 0.02f);
+		mPlayer->animationUpdate(1, 0.02f, true);
 		mPlayerPhysics->move(-200.0f);
+
 	}
 
 	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Scancode::D))
 	{
-		mPlayer->body.setScale(sf::Vector2f(1.f, 1.f));
-		mPlayer->animationUpdate(1, 0.02f);
+		mPlayer->animationUpdate(1, 0.02f, false);
 		mPlayerPhysics->move(200.0f);
 	}
 
@@ -107,21 +99,18 @@ void GameWorld::ProcessEvents()
 //Update nh00y
 void GameWorld::Update(sf::Time deltaTime)
 {
-	//player
-	mPlayer->Update(deltaTime.asSeconds());
-	CheckWorldCollision();
+	float dt = deltaTime.asSeconds();
+	mPlayer->Update(dt);
 
-	//camera
-	//mView.setCenter(mPlayer->body.getPosition());
+	sf::Vector2f vel = mPlayerPhysics->getVelocity();
 
-	/*if (mPlayerCollider->CheckCollision(*mPlatformCollider, .0f))
-	{
-		if (mPlayerPhysics->getVelocity().y > 0)
-		{
-			mPlayerPhysics->setOnGround(true);
-			mPlayerPhysics->setVelocity(0.f);
-		}
-	}*/
+	// Шаг 1: двигаем только по X, затем проверяем горизонтальные коллизии
+	mPlayer->body.move({ vel.x * dt, 0.f });
+	CheckWorldCollisionX();
+
+	// Шаг 2: двигаем только по Y, затем проверяем вертикальные коллизии
+	mPlayer->body.move({ 0.f, vel.y * dt });
+	CheckWorldCollisionY();
 }
 
 //LevelRender
@@ -152,20 +141,6 @@ void GameWorld::RenderWorld()
 	}
 }
 
-//void GameWorld::FindPlayerPosition()
-//{
-//	sf::FloatRect playerBounds = mPlayer->body.getGlobalBounds();
-//	int leftTile = static_cast<int>(playerBounds.position.x / TILE_SIZE);
-//	int rightTile = static_cast<int>((playerBounds.position.x + playerBounds.size.x) / TILE_SIZE);
-//	int topTile = static_cast<int>(playerBounds.position.y / TILE_SIZE);
-//	int bottomTile = static_cast<int>((playerBounds.position.y + playerBounds.size.y) / TILE_SIZE);
-//
-//	std::cout << "left tile : " << leftTile << std::endl;
-//	std::cout << "right tile : " << rightTile << std::endl;
-//	std::cout << "top tile : " << topTile << std::endl;
-//	std::cout << "bottom tile : " << bottomTile << std::endl;
-//}
-
 bool GameWorld::isTileSolid(int tileID) const
 {
 	switch (tileID)
@@ -179,14 +154,12 @@ bool GameWorld::isTileSolid(int tileID) const
 	}
 }
 
-void GameWorld::CheckWorldCollision()
+void GameWorld::CheckWorldCollisionX()
 {
-	mPlayerPhysics->setOnGround(false);
-
 	sf::FloatRect playerBounds = mPlayer->body.getGlobalBounds();
-	int leftTile = static_cast<int>(playerBounds.position.x / TILE_SIZE);
-	int rightTile = static_cast<int>((playerBounds.position.x + playerBounds.size.x) / TILE_SIZE);
-	int topTile = static_cast<int>(playerBounds.position.y / TILE_SIZE);
+	int leftTile   = static_cast<int>(playerBounds.position.x / TILE_SIZE);
+	int rightTile  = static_cast<int>((playerBounds.position.x + playerBounds.size.x) / TILE_SIZE);
+	int topTile    = static_cast<int>(playerBounds.position.y / TILE_SIZE);
 	int bottomTile = static_cast<int>((playerBounds.position.y + playerBounds.size.y) / TILE_SIZE);
 
 	for (int y = topTile; y <= bottomTile; ++y)
@@ -194,34 +167,65 @@ void GameWorld::CheckWorldCollision()
 		for (int x = leftTile; x <= rightTile; ++x)
 		{
 			if (y < 0 || y >= mWorldGrid.size() || x < 0 || x >= mWorldGrid[y].size())
-			{
 				continue;
-			}
-
-			int tileID = mWorldGrid[y][x];
-
-			if (!isTileSolid(tileID))
-			{
+			if (!isTileSolid(mWorldGrid[y][x]))
 				continue;
-			}
 
-			sf::RectangleShape tileRect;
-			tileRect.setSize({ TILE_SIZE, TILE_SIZE });
-			tileRect.setOrigin({ TILE_SIZE / 2.0f, TILE_SIZE / 2.0f });
-			tileRect.setPosition({x * TILE_SIZE + TILE_SIZE / 2.0f, y * TILE_SIZE + TILE_SIZE / 2.0f });
+			sf::FloatRect tileBounds({ x * TILE_SIZE, y * TILE_SIZE }, { TILE_SIZE, TILE_SIZE });
+			auto intersection = playerBounds.findIntersection(tileBounds);
+			if (!intersection)
+				continue;
 
-			Collider tileCollider(tileRect);
+			// Толкаем игрока горизонтально — в сторону, противоположную движению
+			if (mPlayerPhysics->getVelocity().x > 0)
+				mPlayer->body.move({ -intersection->size.x, 0.f });
+			else
+				mPlayer->body.move({  intersection->size.x, 0.f });
 
-			if (mPlayerCollider->CheckCollision(tileCollider, 0.0f))
+			mPlayerPhysics->setVelocityX(0.f);
+			playerBounds = mPlayer->body.getGlobalBounds(); // обновляем после пуша
+		}
+	}
+}
+
+void GameWorld::CheckWorldCollisionY()
+{
+	mPlayerPhysics->setOnGround(false);
+
+	sf::FloatRect playerBounds = mPlayer->body.getGlobalBounds();
+	int leftTile   = static_cast<int>(playerBounds.position.x / TILE_SIZE);
+	int rightTile  = static_cast<int>((playerBounds.position.x + playerBounds.size.x) / TILE_SIZE);
+	int topTile    = static_cast<int>(playerBounds.position.y / TILE_SIZE);
+	int bottomTile = static_cast<int>((playerBounds.position.y + playerBounds.size.y) / TILE_SIZE);
+
+	for (int y = topTile; y <= bottomTile; ++y)
+	{
+		for (int x = leftTile; x <= rightTile; ++x)
+		{
+			if (y < 0 || y >= mWorldGrid.size() || x < 0 || x >= mWorldGrid[y].size())
+				continue;
+			if (!isTileSolid(mWorldGrid[y][x]))
+				continue;
+
+			sf::FloatRect tileBounds({ x * TILE_SIZE, y * TILE_SIZE }, { TILE_SIZE, TILE_SIZE });
+			auto intersection = playerBounds.findIntersection(tileBounds);
+			if (!intersection)
+				continue;
+
+			if (mPlayerPhysics->getVelocity().y > 0)
 			{
-				if (mPlayerPhysics->getVelocity().y > 0)
-				{
-					mPlayerPhysics->setOnGround(true);
-					sf::Vector2f currentVelocity = mPlayerPhysics->getVelocity();
-					currentVelocity.y = 0.f;
-					mPlayerPhysics->setVelocity(currentVelocity.y);
-				}
+				// Падаем вниз — ставим на землю
+				mPlayer->body.move({ 0.f, -intersection->size.y });
+				mPlayerPhysics->setOnGround(true);
 			}
+			else
+			{
+				// Летим вверх — ударились о потолок
+				mPlayer->body.move({ 0.f, intersection->size.y });
+			}
+
+			mPlayerPhysics->setVelocity(0.f);
+			playerBounds = mPlayer->body.getGlobalBounds(); // обновляем после пуша
 		}
 	}
 }
@@ -231,10 +235,7 @@ void GameWorld::Render()
 {
 	mWindow->clear(sf::Color::Cyan);
 	RenderWorld();
-	//mWindow->setView(mView);
-	//m_worldRenderer->draw(mView);
 	mWindow->draw(*mPlayer);
-	//mWindow->draw(mPlatform);
 	mWindow->display();
 	
 }

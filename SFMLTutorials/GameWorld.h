@@ -38,8 +38,8 @@ private:
 	void Update(sf::Time deltaTime);
 	void Render();
 	void RenderWorld();
-	void CheckWorldCollision();
-	void FindPlayerPosition();
+	void CheckWorldCollisionX();
+	void CheckWorldCollisionY();
 	bool isTileSolid(int tileID) const;
 
 	//Level related
@@ -47,7 +47,6 @@ private:
 
 	//Game Objects here instead of main
 	sf::RenderWindow* mWindow;
-	//sf::View mView;
 	Player* mPlayer;
 	Physics* mPlayerPhysics;
 	Collider* mPlayerCollider;

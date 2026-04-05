@@ -2,7 +2,6 @@
 #include <SFML\Graphics.hpp>
 #include "Animation.h"
 #include "Physics.h"
-#include "Collider.h"
 
 class Player : public sf::Drawable
 {
@@ -12,7 +11,7 @@ public:
 
 	Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime);
 	void Update(float deltaTime);
-	void animationUpdate(int row, float deltaTime);
+	void animationUpdate(int row, float deltaTime, bool flipped);
 
 	Physics& getPhysics();
 	~Player();

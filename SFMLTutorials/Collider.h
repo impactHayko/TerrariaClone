@@ -3,18 +3,16 @@
 
 class Collider
 {
-public:
 	Collider(sf::RectangleShape& body);
 	~Collider();
-
-
+public:
 	void Move(float dx, float dy) 
 	{
 		sf::Vector2f offset(dx, dy);
 		body.move(offset); 
 	}
 
-	bool IsIntersecting(const Collider& other) const;
+	//bool IsIntersecting(const Collider& other) const;
 
 	bool CheckCollision(Collider& other, float push);
 	sf::Vector2f GetPosition() { return body.getPosition(); }

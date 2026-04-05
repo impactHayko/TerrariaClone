@@ -11,14 +11,12 @@ Player::Player(sf::Texture* texture, sf::Vector2u imageCount, float switchTime)
 void Player::Update(float deltaTime)
 {
 	physics.Update(deltaTime);
-	sf::Vector2f currentVelocity = physics.getVelocity();
-	body.move(currentVelocity * deltaTime);
 	body.setTextureRect(animation.uvRect);
 }
 
-void Player::animationUpdate(int row, float deltaTime)
+void Player::animationUpdate(int row, float deltaTime, bool flipped)
 {
-	animation.Update(row, deltaTime);
+	animation.Update(row, deltaTime, flipped);
 }
 
 Physics& Player::getPhysics()

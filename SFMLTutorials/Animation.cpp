@@ -2,12 +2,13 @@
 
 Animation::Animation(sf::Texture* texture, sf::Vector2u imageCount, float switchTime)
 {
+	frameWidth = texture->getSize().x / float(imageCount.x);
 	this->imageCount = imageCount;
 	this->switchTime = switchTime;
 	totalTime = 0.0f;
 	currentImage.x = 0;
 
-	uvRect.size.x = texture->getSize().x / float(imageCount.x);
+	uvRect.size.x = frameWidth;
 	uvRect.size.y = texture->getSize().y / float(imageCount.y);
 }
 
@@ -16,7 +17,7 @@ Animation::~Animation()
 
 }
 
-void Animation::Update(int row, float deltaTime)
+void Animation::Update(int row, float deltaTime, bool flipped)
 {
 	currentImage.y = row;
 	totalTime += deltaTime;
@@ -32,6 +33,15 @@ void Animation::Update(int row, float deltaTime)
 		}
 	}
 
-	uvRect.position.x = currentImage.x * uvRect.size.x;
+	uvRect.position.x = currentImage.x * frameWidth;
 	uvRect.position.y = currentImage.y * uvRect.size.y;
+
+	if (flipped) {
+		uvRect.position.x += frameWidth;
+		uvRect.size.x = -frameWidth;
+	}
+
+	else {
+		uvRect.size.x = frameWidth;
+	}
 }

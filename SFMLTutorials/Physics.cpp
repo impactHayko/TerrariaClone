@@ -51,7 +51,6 @@ void Physics::jump(float jumpStrenght)
 void Physics::move(float x)
 {
 	this->velocity.x = x;
-	/*this->velocity.y = y;*/
 }
 
 sf::Vector2f Physics::getVelocity() const
