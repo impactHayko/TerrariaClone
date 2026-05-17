@@ -1,8 +1,14 @@
 .vs/
 Debug/
-SFMLTutorials/Debug/
+x64/
+*/Debug/
+*/x64/
 *.exe
 *.pdb
 *.ilk
 *.obj
 *.idb
+*.tlog
+*.recipe
+*.log
+*_backup_*/

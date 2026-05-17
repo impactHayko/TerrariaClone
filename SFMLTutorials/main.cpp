@@ -1,7 +1,6 @@
 #include <vector>
 #include <iostream>
 #include <SFML/Graphics.hpp>
-#include "Collider.h"
 #include "Animation.h"
 #include "Player.h"
 #include "GameWorld.h"
